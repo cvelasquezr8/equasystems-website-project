@@ -1,0 +1,142 @@
+---
+import DesktopIcon from "../images/line-of-business/desktop.png";
+import WebIcon from "../images/line-of-business/web.png";
+import MovilIcon from "../images/line-of-business/movil.png";
+
+const linesOfBusinnes = [
+  {
+    imageUrl: DesktopIcon,
+    imageAlt: "Soluciones de Escritorio",
+    name: "Software",
+    description:
+      "Software para empresas o negocios personales. Usamos las mejores tecnologías de desarrollo para realizar un excelente producto.",
+  },
+  {
+    imageUrl: WebIcon,
+    imageAlt: "Soluciones de Sitios Web",
+    name: "Páginas Web",
+    description:
+      "Sitios web interactivos, seguros y adaptables para que se pueden visualizar correctamente en smartphones, tablets o computadoras.",
+  },
+  {
+    imageUrl: MovilIcon,
+    imageAlt: "Soluciones de Aplicaciones Moviles",
+    name: "App Moviles",
+    description:
+      "Diseñamos y desarrollamos aplicaciones móviles nativas o híbridas compatibles en todos los dispositivos: iPhone, iPad y Smartphones.",
+  },
+];
+---
+
+<section class="line-of-line-of-business">
+  <div class="container-lob">
+    <h2 class="lob-title">Nuestra Línea de Negocio</h2>
+    {
+      linesOfBusinnes.map((icon) => (
+        <div class="lob-item">
+          <img src={icon.imageUrl} alt={icon.imageAlt} />
+          <h3>{icon.name}</h3>
+          <p>{icon.description}</p>
+        </div>
+      ))
+    }
+    <div class="btn-lob">
+      <a href="services" class="btn-know-more"
+        >Conoce más <i class="fas fa-arrow-right"></i></a
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  .container-lob {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .line-of-line-of-business {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+  }
+
+  .lob-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #0c13df;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 20px;
+  }
+
+  .lob-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+  }
+
+  .lob-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .lob-item img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+  }
+
+  .lob-item h3 {
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .lob-item p {
+    color: #666;
+  }
+
+  .btn-lob {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-lob .btn-know-more {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #0c13df;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-lob .btn-know-more:hover {
+    background-color:  #1c87c9;
+  }
+
+  .btn-know-more i {
+    margin-left: 5px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .lob-item {
+      width: calc(100% / 3 - 40px);
+      margin-right: 20px;
+    }
+
+    .lob-item:last-child {
+      margin-right: 0;
+    }
+  }
+</style>

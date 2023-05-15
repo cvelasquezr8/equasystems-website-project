@@ -1,0 +1,254 @@
+---
+import Layout from "../components/layout.astro";
+
+const formatPhoneNumber = (phoneNumber) => {
+  phoneNumber = phoneNumber.substring(1);
+  const countryCode = phoneNumber.substring(0, 3);
+  const areaCode = phoneNumber.substring(3, 6);
+  const localNumber = phoneNumber.substring(6);
+  return "(" + countryCode + ") " + areaCode + "-" + localNumber;
+};
+
+const companyInfo = {
+  address:
+    "Parque Empresarial Colón 3, Oficina 311, Tarqui, C.P. 090112, Guayas, Cantón Guayaquil.",
+  phoneNumber: formatPhoneNumber("+593986206847"),
+  email: "info@equasystems.com",
+};
+
+const pageInfo = {
+  title: "Contact Us",
+  description:
+    "Contáctanos y descubre cómo podemos ayudarte a llevar tu negocio al siguiente nivel con nuestras soluciones de software personalizadas. En nuestra empresa de desarrollo de software, nos apasiona crear soluciones innovadoras que satisfagan las necesidades únicas de nuestros clientes. ¡Permítenos ayudarte a impulsar tu negocio hoy!",
+};
+---
+
+<Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>
+  <section class="contact-section">
+    <h2 class="section-title">Nos encantaría saber de ti, ¡contáctanos!</h2>
+    <div class="contact-container">
+      <div class="contact-info animate__animated animate__fadeInUp">
+        <h2>Contáctanos</h2>
+        <p>
+          ¿Tienes alguna pregunta? ¡No dudes en contactarnos! Estamos aquí para
+          ayudarte en lo que necesites
+        </p>
+        <ul>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>{companyInfo.address}
+          </li>
+          <li><i class="fas fa-phone"></i>{companyInfo.phoneNumber}</li>
+          <li><i class="fas fa-envelope"></i>{companyInfo.email}</li>
+        </ul>
+      </div>
+      <form class="contact-form animate__animated animate__fadeInUp" action="#" method="POST">
+        <h2>Envíanos un mensaje</h2>
+        <input
+          type="text"
+          name="name"
+          placeholder="Nombre"
+          required
+          class="animated-placeholder"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          required
+          class="animated-placeholder"
+        />
+        <div id="email-error" style="display: none; color: red;">
+          Ingrese un correo electrónico válido
+        </div>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Asunto"
+          required
+          class="animated-placeholder"
+        />
+        <textarea
+          name="message"
+          placeholder="Mensaje"
+          required
+          class="animated-placeholder"></textarea>
+        <input
+          type="submit"
+          class="btn btn-skyblue"
+          value="Enviar"
+          onclick="validarCorreo"
+        />
+      </form>
+    </div>
+  </section>
+
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+    .contact-section {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background-color: #f5f5f5;
+      padding: 20px 0;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: #8e44ad;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-info {
+      flex-basis: 45%;
+      max-width: 45%;
+      text-align: left;
+      background-color: #f5f5f5;
+      padding: 50px 0;
+      text-align: center;
+      animation-duration: 1s;
+    }
+
+    .contact-info h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .contact-info p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      color: #777;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 50px;
+    }
+
+    .contact-info ul li {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .contact-info ul li i {
+      margin-right: 10px;
+      color: #0c13df;
+      font-size: 24px;
+    }
+
+    .contact-form {
+      flex-basis: 50%;
+      max-width: 50%;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      animation-duration: 1s;
+    }
+
+    .contact-form h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+      font-size: 18px;
+    }
+
+    .contact-form input[type="text"]:focus::placeholder,
+    .contact-form input[type="email"]:focus::placeholder,
+    .contact-form textarea:focus::placeholder {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+
+    .contact-form input[type="text"]::placeholder,
+    .contact-form input[type="email"]::placeholder,
+    .contact-form textarea::placeholder {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      transition: all 0.3s ease;
+      font-size: 18px;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+    }
+
+    .contact-form input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0c13df;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      background-color: #87ceeb;
+    }
+
+    @media only screen and (max-width: 767px) {
+      .contact-container {
+        flex-direction: column;
+      }
+      .contact-info,
+      .contact-form {
+        flex-basis: 100%;
+        max-width: 100%;
+        text-align: center;
+      }
+      .contact-info {
+        margin-bottom: 40px;
+      }
+    }
+
+    .btn-skyblue {
+      background-color: #87ceeb;
+      color: #fff;
+    }
+
+    .icon-skyblue {
+      color: #87ceeb;
+    }
+  </style>
+</Layout>

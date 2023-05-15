@@ -1,15 +1,25 @@
 ---
+import Layout from "../components/layout.astro";
+import Clients from "../components/client-section.astro";
+import LineOfBusiness from "../components/line-of-business.astro";
+import Carousel from "../components/carousel.astro";
+import About from "../components/about-us.astro";
+
+const pageInfo = {
+  title: "Home",
+  description:
+    "La empresa EquaSystems es líder en el desarrollo de software personalizado para empresas de diversos sectores. Con un enfoque en la calidad, la eficiencia y la innovación, nuestro equipo altamente capacitado ofrece soluciones integrales y adaptables para satisfacer las necesidades específicas de cada cliente. Desde aplicaciones móviles hasta sistemas empresariales, en EquaSystems estamos comprometidos a brindar soluciones tecnológicas a medida que impulsen el crecimiento y el éxito de nuestros clientes.",
+};
+
+const imagesCarousel = await Astro.glob("../images/index/*");
+const carousel = imagesCarousel.map((image) => {
+  return { urlLink: image.default };
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>
+  <Carousel imagesCarousel={carousel} />
+  <About />
+  <LineOfBusiness />
+  <Clients />
+</Layout>

@@ -1,0 +1,121 @@
+---
+import Layout from "../components/layout.astro";
+import MisionCompany from "../images/company-goals/MisionCompany.jpeg";
+import VisionCompany from "../images/company-goals/VisionCompany.jpeg";
+import ValuesCompany from "../images/company-goals/ValuesCompany.jpeg";
+
+const company = [
+  {
+    title: "Misión",
+    logo: MisionCompany,
+    text: "Nuestra misión es brindar soluciones innovadoras y de calidad en el ámbito del desarrollo de software, satisfaciendo las necesidades y expectativas de nuestros clientes.",
+    altLogo: "Misión de la compañia",
+  },
+  {
+    title: "Visión",
+    logo: VisionCompany,
+    text: "Nos proyectamos como una empresa líder en el mercado del desarrollo de software, reconocida por nuestra excelencia en la calidad de nuestros productos y servicios.",
+    altLogo: "Visión de la compañia",
+  },
+  {
+    title: "Valores",
+    logo: ValuesCompany,
+    text: "Nuestros valores son la ética, el compromiso, la innovación y la excelencia en el servicio al cliente. Estos valores son los pilares de nuestra cultura organizacional.",
+    altLogo: "Valores de la compañia",
+  },
+];
+
+const pageInfo = {
+  title: "Company",
+  description:
+    "Descubre nuestros valores, visión y misión en el desarrollo de software. Buscamos la excelencia y la innovación para superar las expectativas de nuestros clientes. Nuestra visión es ser líderes en el campo, impulsando el progreso tecnológico. Nuestra misión es ofrecer soluciones personalizadas y de calidad para el crecimiento de nuestros clientes. Trabajamos con compromiso, confianza y colaboración para brindar un servicio excepcional. ¡Únete a nosotros y alcanza tus objetivos tecnológicos!",
+};
+---
+
+<Layout pageDescription={pageInfo.description} pageTitle={pageInfo.title}>
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">Misión, Visión y Valores</h2>
+      <div class="row">
+        {
+          company.map((element) => (
+            <div class="col-md-4">
+              <div class="card animate__animated animate__fadeInUp">
+                <img src={element.logo} alt={element.altLogo} />
+                <div class="card-body">
+                  <h3 class="card-title">{element.title}</h3>
+                  <p class="card-text">{element.text}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+
+    .about {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background-color: #f5f5f5;
+      padding: 20px 0;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: #8e44ad;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      background-color: #fff;
+      animation-duration: 1s;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card-text {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    @media screen and (max-width: 768px) {
+      .col-md-4 {
+        width: 100%;
+      }
+    }
+  </style>
+</Layout>

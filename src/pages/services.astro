@@ -1,0 +1,209 @@
+---
+import Layout from "../components/layout.astro";
+
+const featureImages = await Astro.glob("../images/features/*");
+const listFeatures = [
+  {
+    name: "api",
+    title: "API de clasifiación en tiempo real",
+    altImage: "API icon",
+    logo: "",
+    description:
+      "EQUASYSTEMS ofrece una API en tiempo real para consultas de calificación comparativas o de terceros. Las tarifas son precisas y actualizadas automáticamente. Facilitamos la transferencia de datos y documentos para simplificar el proceso de compra y respaldar reglas de suscripción y flujos de trabajo.",
+  },
+  {
+    name: "sms",
+    title: "Mensajería SMS",
+    altImage: "SMS icon",
+    logo: "",
+    description:
+      "Envía y recibe mensajes SMS reales desde cualquier teléfono celular en el mundo con nuestra API de mensajería SMS. Automatiza recordatorios de pago y procesa pagos con una respuesta de confirmación. Habilita una comunicación bidireccional con clientes, agentes y ajustadores a través de nuestra API de mensajería SMS.",
+  },
+  {
+    name: "task-manager",
+    title: "Cuadros de mando de gestión",
+    altImage: "Task Manager icon",
+    logo: "",
+    description:
+      "Nuestros paneles visuales personalizables permiten a los gerentes controlar el pulso del negocio. Visualiza métricas importantes en tiempo real en un formato altamente visual. Compara datos con objetivos y períodos anteriores, identifica tendencias y evalúa el impacto de ajustes antes de los informes tradicionales.",
+  },
+  {
+    name: "red",
+    title: "Detección de red",
+    altImage: "Red icon",
+    logo: "",
+    description:
+      "Nuestros sistemas detectan la pérdida de conexión a Internet para evitar el envío de datos sin comunicación con el servidor. Olvídate de las dudas sobre la finalización de transacciones en casos de pérdida de conexión o inactividad temporal. Supervisamos constantemente la conectividad del cliente, brindándote información actualizada sobre el estado de tus transacciones.",
+  },
+  {
+    name: "socket",
+    title: "Web Socket",
+    altImage: "Web Socket icon",
+    logo: "",
+    description:
+      "Nuestros sistemas permiten a los usuarios abrir múltiples ventanas y comunicarse entre ellas. Además, el servidor puede enviar mensajes al navegador sin necesidad de que el usuario haga clic. Utilizamos tecnología de web sockets para funciones adicionales como chat en tiempo real, disponibilidad de sesión y notificaciones.",
+  },
+  {
+    name: "inyeccion-sql",
+    title: "Protección de inyección sql",
+    altImage: "SQL icon",
+    logo: "",
+    description:
+      "Nuestros sistemas utilizan un mecanismo de protección de sesión único que hace que sea casi imposible secuestrar una sesión, incluso si el atacante tiene acceso a la información. Se requiere tanto la información de la sesión como una clave de desafío para acceder a una sesión. Si la clave de desafío es incorrecta, la sesión se invalida automáticamente, lo que la vuelve inútil para cualquier intento de ataque posterior.",
+  },
+  {
+    name: "session",
+    title: "Prevención de secuestro de sesión",
+    altImage: "Session icon",
+    logo: "",
+    description:
+      "Nuestros sistemas utilizan un mecanismo de protección de sesión único que hace que sea extremadamente difícil secuestrar una sesión, incluso si el atacante tiene acceso a la información de la sesión. Además de la información de la sesión, se requiere una clave de desafío para acceder a ella. Si la clave de desafío es incorrecta, la sesión se invalida automáticamente, lo que la vuelve inútil para cualquier intento de ataque posterior.",
+  },
+  {
+    name: "credit-card",
+    title: "Pagos electrónicos",
+    altImage: "Credit Card icon",
+    logo: "",
+    description:
+      "En EQUASYSTEMS, puedes recolectar diferentes formas de moneda, incluyendo opciones digitales como ACH, EFT, cheques electrónicos y tarjetas de crédito. La capacidad de aceptar pagos electrónicos depende de los procesadores de pago que elijas.",
+  },
+  {
+    name: "workflow",
+    title: "Flujo de trabajo basado en eventos",
+    altImage: "Workflow icon",
+    logo: "",
+    description:
+      "Con nuestro diseñador de flujo de trabajo visual, puedes personalizar y automatizar tus procesos mediante eventos personalizados. Esto incluye enviar mensajes, programar citas, enviar correos electrónicos, procesar pagos y más. Las opciones son ilimitadas y dependen de tus reglas y configuraciones.",
+  },
+];
+
+featureImages.forEach((image) => {
+  const nameImage = image.default
+    .split("/")
+    .slice(-1)
+    .toString()
+    .replace(".png", "");
+  listFeatures.forEach((feature) => {
+    if (feature.name === nameImage) {
+      feature.logo = image.default;
+    }
+  });
+});
+
+const pageInfo = {
+  title: "Services",
+  description:
+    "Descubre nuestros servicios de desarrollo de software personalizados. Ofrecemos soluciones adaptadas a tus necesidades, desde el diseño de aplicaciones móviles hasta el desarrollo de plataformas web. Nuestro equipo de expertos te guiará a lo largo de todo el proceso, asegurando la calidad y eficiencia en cada proyecto. Trabajamos con las últimas tecnologías y metodologías para ofrecerte resultados de vanguardia. Confía en nosotros para llevar tu idea al siguiente nivel y alcanzar el éxito digital. ¡Descubre cómo podemos ayudarte a hacer realidad tus proyectos!",
+};
+---
+
+<Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Características de nuestro sistema</h2>
+      <div class="row">
+        {
+          listFeatures.map((feature) => (
+            <div class="col-md-4">
+              <div class="feature  animated fadeInUp">
+                <img src={feature.logo} alt={feature.altImage} />
+                <h3 class="feature-title">{feature.title}</h3>
+                <p class="feature-description">{feature.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+
+    .features {
+      padding: 80px 0;
+      background-color: #f5f5f5;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      font-weight: bold;
+    }
+
+    .feature {
+      background-color: #fff;
+      border-radius: 5px;
+      text-align: center;
+      padding: 40px 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature img {
+      max-width: 50%;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .feature p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      color: #333;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background-color: #f5f5f5;
+      padding: 20px 0;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: #8e44ad;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .feature {
+      animation-duration: 1s;
+    }
+
+    .animated {
+      animation-fill-mode: both;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 50%, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .fadeInUp {
+      animation-name: fadeInUp;
+    }
+  </style>
+</Layout>

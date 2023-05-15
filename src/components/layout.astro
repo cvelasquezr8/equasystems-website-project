@@ -1,0 +1,146 @@
+---
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import FixedButton from "../components/fixed-button.astro";
+import CompanyIco from "../images/company/Company.ico";
+
+interface Props {
+  pageTitle: string;
+  pageDescription: string;
+}
+
+const { pageTitle, pageDescription } = Astro.props;
+const formatPhoneNumber = (phoneNumber) => {
+  phoneNumber = phoneNumber.substring(1);
+  const countryCode = phoneNumber.substring(0, 3);
+  const areaCode = phoneNumber.substring(3, 6);
+  const localNumber = phoneNumber.substring(6);
+  return "(" + countryCode + ") " + areaCode + "-" + localNumber;
+};
+
+const companyInfo = {
+  contact: [
+    {
+      name: formatPhoneNumber("+593986206847"),
+      icon: "fas fa-phone-alt",
+      refLink: "#",
+    },
+    {
+      name: "info@equasystems.com",
+      icon: "far fa-envelope",
+      refLink: "#",
+    },
+    {
+      name: "Parque Empresarial Colón 3, Oficina 311, Tarqui, C.P. 090112, Guayas, Cantón Guayaquil.",
+      icon: "fas fa-map-marker-alt",
+      refLink: "#",
+    },
+  ],
+  socialMedia: [
+    {
+      name: " Facebook",
+      icon: "fab fa-facebook-f",
+      refLink: "#",
+    },
+    {
+      name: " Twitter",
+      icon: "fab fa-twitter",
+      refLink: "#",
+    },
+    {
+      name: " Instagram",
+      icon: "fab fa-instagram",
+      refLink: "#",
+    },
+  ],
+  siteMap: [
+    {
+      name: "Inicio",
+      refLink: "/",
+    },
+    {
+      name: "Equipo",
+      refLink: "team",
+    },
+    {
+      name: "Servicios",
+      refLink: "services",
+    },
+    {
+      name: "Empresa",
+      refLink: "company",
+    },
+    {
+      name: "Contacto",
+      refLink: "contact-us",
+    },
+  ],
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/ico" href={CompanyIco} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDescription} />
+    <meta
+      name="keywords"
+      content="equipo de desarrollo, desarrollo de software, desarrollo de aplicaciones, programadores expertos, equipo de desarrollo de software, soluciones tecnológicas, desarrollo web, desarrollo móvil, servicios de programación, desarrollo de software personalizado"
+    /> 
+    <title>EquaSystems | {pageTitle}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-LvewiOi2b+g6yJ08p4AVvC5zYVw0SQ7ADvV0wnG5txk0mJ0rKsUNwwlPVXYsGJm+pAK7z7rC69WVW8j/miUOHQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        background-color: #f5f5f5;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header companyData={companyInfo} />
+    <slot />
+    <FixedButton />
+    <Footer companyData={companyInfo} />
+  </body>
+</html>

@@ -1,0 +1,159 @@
+---
+import FooterLogo from "../images/footer/LogoFooter.png";
+
+interface SiteMap {
+  name: string;
+  refLink: string;
+}
+
+interface SocialMedia {
+  name: string;
+  refLink: string;
+  icon: string;
+}
+
+interface Contact {
+  name: string;
+  refLink: string;
+  icon: string;
+}
+
+interface Props {
+  companyData: {
+    contact: Array<Contact>;
+    siteMap: Array<SiteMap>;
+    socialMedia: Array<SocialMedia>;
+  };
+}
+
+const { companyData } = Astro.props;
+const { socialMedia, siteMap, contact } = companyData;
+---
+
+<footer>
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h3>Contacto</h3>
+      <ul>
+        {
+          contact.map((element) => (
+            <li>
+              <i class={element.icon} />
+              <a href={element.refLink}>{element.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Síguenos en redes sociales</h3>
+      <ul>
+        {
+          socialMedia.map((media) => (
+            <li>
+              <a href={media.refLink}>
+                <i class={media.icon} />
+                {media.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Enlaces rápidos</h3>
+      <ul>
+        {
+          siteMap.map((site) => (
+            <li>
+              <a href={site.refLink}>{site.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="footer-column">
+      <div class="footer-logo">
+        <img src={FooterLogo} alt="Logo de la empresa" />
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2023 Todos los derechos reservados - EquaSystems S.A.S</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo img {
+    max-height: 450px;
+  }
+
+  .footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+  }
+
+  .footer-column {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+
+  .footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-column p {
+    margin-top: 20px;
+  }
+
+  .footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      align-items: start;
+    }
+
+    .footer-logo {
+      grid-row: 1 / 16;
+    }
+  }
+</style>

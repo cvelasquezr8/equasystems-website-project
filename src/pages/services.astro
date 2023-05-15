@@ -84,7 +84,7 @@ featureImages.forEach((image) => {
     .toString()
     .replace(".png", "");
   listFeatures.forEach((feature) => {
-    if (feature.name === nameImage) {
+    if (nameImage.includes(feature.name)) {
       feature.logo = image.default;
     }
   });

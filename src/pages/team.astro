@@ -82,7 +82,7 @@ imagesMember.forEach((member) => {
     .toString()
     .replace(".png", "");
   membersTeam.forEach((emp) => {
-    if (emp.code === nameImage) {
+    if (nameImage.includes(emp.code)) {
       emp.image = member.default;
     }
   });

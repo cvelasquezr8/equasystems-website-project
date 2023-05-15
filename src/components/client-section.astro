@@ -1,5 +1,5 @@
 ---
-const imagesCompany = await Astro.glob("../images/clients/*");
+const imagesCompany = await Astro.glob("../images/clients/*.png");
 
 const clients = [
   {
@@ -30,9 +30,13 @@ const clients = [
 ];
 
 imagesCompany.forEach((image) => {
-  const nameImage = image.default.split("/").slice(-1).toString().replace(".png", "");
+  const nameImage = image.default
+    .split("/")
+    .slice(-1)
+    .toString()
+    .replace(".png", "");
   clients.forEach((client) => {
-    if (client.name === nameImage){
+    if (nameImage.includes(client.name)) {
       client.logo = image.default;
     }
   });
@@ -45,14 +49,13 @@ imagesCompany.forEach((image) => {
     <h3>¡Descubre nuestros clientes en acción!</h3>
     <div class="client-list">
       {
-        clients.map((client) => 
+        clients.map((client) => (
           <img src={client.logo} alt={client.comercialName} />
-        )
+        ))
       }
     </div>
   </div>
 </section>
-
 
 <style>
   .section-title {

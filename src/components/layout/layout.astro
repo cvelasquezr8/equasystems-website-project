@@ -128,6 +128,7 @@ const companyInfo = {
     <Footer companyData={companyInfo} />
 
     <script>
+      //Carousel
       const slides = document.querySelectorAll(".slider-slide-carousel");
       let currentSlide = 0;
       const slideInterval = 10000;
@@ -139,9 +140,9 @@ const companyInfo = {
 
       setInterval(nextSlide, slideInterval);
       slides[currentSlide].classList.add("active");
-    </script>
+      //Carousel
 
-    <script>
+      //Header
       const menuBtn = document.querySelector(".burguer");
       const menu = document.querySelector(".menu");
       const navItems = document.querySelectorAll(".menu ul li");
@@ -171,6 +172,7 @@ const companyInfo = {
           showMenu = false;
         }
       }
+      //Header
     </script>
   </body>
 </html>

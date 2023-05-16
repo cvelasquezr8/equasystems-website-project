@@ -1,5 +1,14 @@
 ---
-import Layout from "../components/layout.astro";
+import "../styles/Team.css";
+import Layout from "../components/layout/layout.astro";
+import spitcher from "/images/team/spitcher.png";
+import bzambrano from "/images/team/bzambrano.png";
+import cvelasquez from "/images/team/cvelasquez.png";
+import esolorzano from "/images/team/esolorzano.png";
+import example from "/images/team/example.png";
+import jpucuna from "/images/team/jpucuna.png";
+import yarteaga from "/images/team/yarteaga.png";
+import aarteaga from "/images/team/aarteaga.png";
 
 const pageInfo = {
   title: "Team",
@@ -13,7 +22,7 @@ const membersTeam = [
     jobPosition: "CEO",
     description:
       "Sean Pitcher es un experto en seguros con más de 22 años de experiencia en la industria. Ha ocupado cargos destacados en compañías como Service Insurance y American Strategic Insurance, brindando liderazgo y desarrollo de productos en seguros de propiedad y daños.",
-    image: "",
+    image: spitcher,
     altImage: "Sean Pitcher",
     class: "",
   },
@@ -22,7 +31,7 @@ const membersTeam = [
     jobPosition: "Software Engineer",
     description:
       "Yohan Arteaga es un experto en el desarrollo de aplicaciones web sofisticadas y tiene experiencia en diversas industrias, como banca, recursos humanos, procesamiento de pagos y gestión de inventario. Su especialización incluye Node.js, JavaScript, HTML y CSS Grid. Además, ha trabajado en importantes empresas de desarrollo en Ecuador.",
-    image: "",
+    image: yarteaga,
     altImage: "Yohan Arteaga",
     class: "",
   },
@@ -31,7 +40,7 @@ const membersTeam = [
     jobPosition: "General Manager",
     description:
       "Betty Zambrano Salazar es una ciudadana estadounidense con experiencia en publicidad, mercadeo, administración y ciencias de la computación. Ha dirigido ventas y mercadeo en varias empresas y ha trabajado en el desarrollo y gestión integral de empresas.",
-    image: "",
+    image: bzambrano,
     altImage: "Betty Zambrano",
     class: "",
   },
@@ -40,7 +49,7 @@ const membersTeam = [
     jobPosition: "Developer Leader",
     description:
       "Carlos Velásquez es un profesional especializado en programación de sistemas, dedicado a crear soluciones empresariales. Tiene experiencia liderando equipos y proyectos en el desarrollo conceptual y la implementación de productos.",
-    image: "",
+    image: cvelasquez,
     altImage: "Carlos Velásquez",
     class: "",
   },
@@ -49,7 +58,7 @@ const membersTeam = [
     jobPosition: "Developer",
     description:
       "Erwing Solórzano es un ingeniero de sistemas con habilidades destacadas en la resolución de problemas y una amplia experiencia en la administración de sistemas basados en la nube. También cuenta con experiencia en brindar soporte presencial y remoto a usuarios. Es un líder en la administración de plataformas.",
-    image: "",
+    image: esolorzano,
     altImage: "Erwing Solorzano",
     class: "",
   },
@@ -58,7 +67,7 @@ const membersTeam = [
     jobPosition: "Developer",
     description:
       "Joan Pucuna es un ingeniero en Sistemas Informáticos y un desarrollador Jr. en PHP. Se ha especializado en la implementación de sistemas de facturación electrónica utilizando lenguaje PHP, MySQL y el gestor de base de datos Laravel",
-    image: "",
+    image: jpucuna,
     altImage: "Joan Pucuna",
     class: "",
   },
@@ -67,26 +76,11 @@ const membersTeam = [
     jobPosition: "Developer",
     description:
       "Anthony Arteaga es un desarrollador de software Jr. con experiencia en el testeo de aplicaciones web. Posee una formación en la Universidad Estatal, donde se ha enfocado en mantener altos estándares de calidad en el funcionamiento de las aplicaciones.",
-    image: "",
+    image: aarteaga,
     altImage: "Anthony Arteaga",
     class: "",
   },
 ];
-
-const imagesMember = await Astro.glob("../images/team/*");
-
-imagesMember.forEach((member) => {
-  const nameImage = member.default
-    .split("/")
-    .slice(-1)
-    .toString()
-    .replace(".png", "");
-  membersTeam.forEach((emp) => {
-    if (nameImage.includes(emp.code)) {
-      emp.image = member.default;
-    }
-  });
-});
 
 let flag = 1;
 membersTeam.forEach((emp) => {
@@ -97,12 +91,12 @@ membersTeam.forEach((emp) => {
 ---
 
 <Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>
-  <section class="team">
-    <h2 class="section-title">
+  <section class="team"> 
+    <h2 class="section-title-team">
       Te Presentamos a Nuestro Equipo de Colaboradores</h2>
     <div class="bio-container animate__animated animate__fadeInUp">
-      <div class="wrapper">
-        <div class="center-line">
+      <div class="wrapper-team">
+        <div class="center-line-team">
           <a href="#" class="scroll-icon" title="Ir arriba"
             ><i class="fas fa-caret-up"></i></a
           >
@@ -127,191 +121,4 @@ membersTeam.forEach((emp) => {
       </div>
     </div>
   </section>
-
-  <style>
-    @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
-    .section-title {
-      font-size: 36px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 50px;
-      color: #333;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      background-color: #f5f5f5;
-      padding: 20px 0;
-    }
-
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 80px;
-      height: 3px;
-      background-color: #8e44ad;
-      margin: 0 auto;
-      margin-top: 20px;
-    }
-
-    .bio-container {
-      animation-duration: 1s;
-    }
-
-    .wrapper {
-      max-width: 1080px;
-      margin: 50px auto;
-      padding: 0 20px;
-      position: relative;
-    }
-    .wrapper .center-line {
-      position: absolute;
-      height: 100%;
-      width: 4px;
-      background: #d1d1d1;
-      left: 50%;
-      top: 20px;
-      transform: translateX(-50%);
-    }
-    .wrapper .row {
-      display: flex;
-    }
-    .wrapper .row section {
-      background: #fff;
-      border-radius: 5px;
-      width: calc(50% - 40px);
-      padding: 20px;
-      position: relative;
-    }
-    .wrapper .row section::before {
-      position: absolute;
-      content: "";
-      height: 15px;
-      width: 15px;
-      background: #fff;
-      top: 28px;
-      z-index: -1;
-      transform: rotate(45deg);
-    }
-
-    /*left*/
-    .wrapper .row-1 {
-      justify-content: flex-start;
-    }
-    .row-1 section::before {
-      right: -7px;
-    }
-    .row-1 section .icon {
-      top: 15px;
-      right: -60px;
-    }
-    /*right*/
-    .wrapper .row-2 {
-      justify-content: flex-end;
-    }
-    .row-2 section::before {
-      left: -7px;
-    }
-    .row-2 section .icon {
-      top: 15px;
-      left: -60px;
-    }
-    /*Up button*/
-    .center-line .scroll-icon {
-      bottom: 0px;
-      left: 50%;
-      font-size: 25px;
-      transform: translateX(-50%);
-    }
-    /*Lines*/
-    .row section .icon,
-    .center-line .scroll-icon {
-      position: absolute;
-      background: #f2f2f2;
-      height: 40px;
-      width: 40px;
-      text-align: center;
-      line-height: 40px;
-      color: #0c13df;
-      font-size: 17px;
-      box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0, 0, 0, 0.253),
-        0 3px 0 4px rgba(0, 0, 0, 0.144);
-    }
-    .row section .details,
-    .row section .bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .row section .details .title {
-      font-size: 22px;
-      font-weight: 600;
-    }
-    .row section p {
-      margin: 10px 0 17px 0;
-    }
-    /*MediaQuerys*/
-    @media (max-width: 790px) {
-      .wrapper .center-line {
-        left: 40px;
-      }
-      .wrapper .row {
-        margin: 30px 0 3px 60px;
-      }
-      .wrapper .row section {
-        width: 100%;
-      }
-      .row-1 section::before {
-        left: -7px;
-      }
-      .row-1 section .icon {
-        left: -60px;
-      }
-    }
-    @media (max-width: 440px) {
-      .wrapper .center-line,
-      .row section::before,
-      .row section .icon {
-        display: none;
-      }
-      .wrapper .row {
-        margin: 10px 0;
-      }
-    }
-
-    .avatar {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .member-info {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .member-name {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .member-position {
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 10px;
-    }
-
-    .member-description {
-      font-size: 16px;
-      text-align: justify;
-    }
-  </style>
 </Layout>

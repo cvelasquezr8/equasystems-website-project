@@ -1,8 +1,9 @@
 ---
-import Header from "../components/header.astro";
-import Footer from "../components/footer.astro";
-import FixedButton from "../components/fixed-button.astro";
-import CompanyIco from "../images/company/Company.ico";
+import Header from "../../components/header/header.astro";
+import Footer from "../../components/footer/footer.astro";
+import FixedButton from "../../components/fixed-button/fixed-button.astro";
+import CompanyIco from "/images/company/Company.ico";
+import "../layout/layout.css";
 
 interface Props {
   pageTitle: string;
@@ -21,7 +22,12 @@ const formatPhoneNumber = (phoneNumber) => {
 const companyInfo = {
   contact: [
     {
-      name: formatPhoneNumber("+593986206847"),
+      name: "+593 (986) 206-847",
+      icon: "fas fa-phone-alt",
+      refLink: "#",
+    },
+    {
+      name: "+1 (941) 809-3071",
       icon: "fas fa-phone-alt",
       refLink: "#",
     },
@@ -31,7 +37,7 @@ const companyInfo = {
       refLink: "#",
     },
     {
-      name: "Parque Empresarial Colón 3, Oficina 311, Tarqui, C.P. 090112, Guayas, Cantón Guayaquil.",
+      name: "Parque Empresarial Colón, Guayas, Cantón Guayaquil.",
       icon: "fas fa-map-marker-alt",
       refLink: "#",
     },
@@ -56,23 +62,23 @@ const companyInfo = {
   siteMap: [
     {
       name: "Inicio",
-      refLink: "/equasystems-website-project/",
+      refLink: "/",
     },
     {
       name: "Equipo",
-      refLink: "team",
+      refLink: "/team",
     },
     {
       name: "Servicios",
-      refLink: "services",
+      refLink: "/services",
     },
     {
       name: "Empresa",
-      refLink: "company",
+      refLink: "/company",
     },
     {
       name: "Contacto",
-      refLink: "contact-us",
+      refLink: "/contact-us",
     },
   ],
 };
@@ -89,7 +95,7 @@ const companyInfo = {
     <meta
       name="keywords"
       content="equipo de desarrollo, desarrollo de software, desarrollo de aplicaciones, programadores expertos, equipo de desarrollo de software, soluciones tecnológicas, desarrollo web, desarrollo móvil, servicios de programación, desarrollo de software personalizado"
-    /> 
+    />
     <title>EquaSystems | {pageTitle}</title>
     <link
       rel="stylesheet"
@@ -121,20 +127,6 @@ const companyInfo = {
       src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"
       type="text/javascript"
     ></script>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        background-color: #f5f5f5;
-        height: 100%;
-        width: 100%;
-      }
-    </style>
   </head>
 
   <body>
@@ -142,5 +134,51 @@ const companyInfo = {
     <slot />
     <FixedButton />
     <Footer companyData={companyInfo} />
+
+    <script>
+      const slides = document.querySelectorAll(".slider-slide-carousel");
+      let currentSlide = 0;
+      const slideInterval = 10000;
+      function nextSlide() {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }
+
+      setInterval(nextSlide, slideInterval);
+      slides[currentSlide].classList.add("active");
+    </script>
+
+    <script>
+      const menuBtn = document.querySelector(".burguer");
+      const menu = document.querySelector(".menu");
+      const navItems = document.querySelectorAll(".menu ul li");
+
+      let showMenu = false;
+
+      menuBtn.addEventListener("click", toggleMenu);
+
+      function toggleMenu() {
+        if (!showMenu) {
+          menuBtn.classList.add("active");
+          menu.classList.add("show");
+          navItems.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 50}ms`;
+            item.classList.add("show");
+          });
+          showMenu = true;
+        } else {
+          menuBtn.classList.remove("active");
+          navItems.forEach((item, index) => {
+            item.style.transitionDelay = "";
+            item.classList.remove("show");
+          });
+          setTimeout(() => {
+            menu.classList.remove("show");
+          }, 500);
+          showMenu = false;
+        }
+      }
+    </script>
   </body>
 </html>

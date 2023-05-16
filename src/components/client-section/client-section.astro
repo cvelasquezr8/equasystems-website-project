@@ -1,0 +1,51 @@
+---
+import "../client-section/client-section.css";
+import STM from "/images/client-company/STM.png";
+import CCI from "/images/client-company/CCI.png";
+import NPIA from "/images/client-company/NPIA.png";
+import SSI from "/images/client-company/SSI.png";
+import UESS from "/images/client-company/UESS.png";
+
+
+const clients = [
+  {
+    name: "STM",
+    comercialName: "Sterling MGA",
+    logo: STM,
+  },
+  {
+    name: "CCI",
+    comercialName: "Covercube",
+    logo: CCI,
+  },
+  {
+    name: "NPIA",
+    comercialName: "NPIA, Inc.",
+    logo: NPIA,
+  },
+  {
+    name: "SSI",
+    comercialName: "StartStone",
+    logo: SSI,
+  },
+  {
+    name: "UESS",
+    comercialName: "Tecnológico Universitario Espíritu Santo",
+    logo: UESS,
+  },
+];
+---
+
+<section class="clients-section">
+  <div class="animated-section section-title">
+    <h2>Nuestros clientes</h2>
+    <h3>¡Descubre nuestros clientes en acción!</h3>
+    <div class="client-list">
+      {
+        clients.map((client) => (
+          <img src={client.logo} alt={client.comercialName} />
+        ))
+      }
+    </div>
+  </div>
+</section>

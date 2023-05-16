@@ -1,0 +1,50 @@
+---
+import "../line-of-business/line-of-business.css";
+import DesktopIcon from "/images/line-of-business/desktop.png";
+import WebIcon from "/images/line-of-business/web.png";
+import MovilIcon from "/images/line-of-business/movil.png";
+
+const linesOfBusinnes = [
+  {
+    imageUrl: DesktopIcon,
+    imageAlt: "Soluciones de Escritorio",
+    name: "Software",
+    description:
+      "Software para empresas o negocios personales. Usamos las mejores tecnologías de desarrollo para realizar un excelente producto.",
+  },
+  {
+    imageUrl: WebIcon,
+    imageAlt: "Soluciones de Sitios Web",
+    name: "Páginas Web",
+    description:
+      "Sitios web interactivos, seguros y adaptables para que se pueden visualizar correctamente en smartphones, tablets o computadoras.",
+  },
+  {
+    imageUrl: MovilIcon,
+    imageAlt: "Soluciones de Aplicaciones Moviles",
+    name: "App Moviles",
+    description:
+      "Diseñamos y desarrollamos aplicaciones móviles nativas o híbridas compatibles en todos los dispositivos: iPhone, iPad y Smartphones.",
+  },
+];
+---
+
+<section class="line-of-line-of-business">
+  <div class="container-lob">
+    <h2 class="lob-title">Nuestra Línea de Negocio</h2>
+    {
+      linesOfBusinnes.map((icon) => (
+        <div class="lob-item">
+          <img src={icon.imageUrl} alt={icon.imageAlt} />
+          <h3>{icon.name}</h3>
+          <p>{icon.description}</p>
+        </div>
+      ))
+    }
+    <div class="btn-lob">
+      <a href="/services" class="btn-know-more"
+        >Conoce más <i class="fas fa-arrow-right"></i></a
+      >
+    </div>
+  </div>
+</section>

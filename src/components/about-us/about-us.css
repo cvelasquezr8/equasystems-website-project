@@ -1,0 +1,94 @@
+.about-us {
+  text-align: center;
+  padding: 40px;
+}
+
+.about-us h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #0c13df;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 20px;
+}
+
+.content-row-about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-about {
+  flex: 0 0 50%;
+  max-width: 30%;
+  margin-bottom: 20px;
+}
+
+.logo-about img {
+  max-width: 100%;
+  height: auto;
+}
+
+.description-about {
+  flex: 0 0 50%;
+  text-align: left;
+  padding: 20px;
+}
+
+.card-about {
+  margin-left: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 2%;
+}
+
+.card-about p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.description-about p {
+  font-size: 20px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.btn-about .btn-know-us {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #0c13df;
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-about .btn-know-us:hover {
+  background-color: #1c87c9;
+}
+
+@media screen and (max-width: 768px) {
+  .about-us {
+    padding: 20px;
+  }
+
+  .content-row {
+    flex-direction: column;
+  }
+
+  .logo-about,
+  .description-about {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}

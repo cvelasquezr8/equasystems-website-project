@@ -1,0 +1,40 @@
+---
+import "../header/header.css"
+import HeaderLogo from "/images/header/LogoHeader.png";
+
+interface SiteMap {
+  name: string;
+  refLink: string;
+}
+
+interface Props {
+  companyData: {
+    siteMap: Array<SiteMap>;
+  };
+}
+
+const { companyData } = Astro.props;
+const { siteMap } = companyData;
+---
+
+<header>
+  <div class="logo-header">
+    <img src={HeaderLogo} alt="EquaSystems Logo" />
+  </div>
+  <nav class="menu menu-resp">
+    <ul>
+      {
+        siteMap.map(site => 
+          <li>
+            <a href={site.refLink}>{site.name}</a>
+          </li>
+        )
+      }
+    </ul>
+  </nav>
+  <div class="burguer">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</header>

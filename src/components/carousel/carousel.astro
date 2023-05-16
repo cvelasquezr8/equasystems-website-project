@@ -1,0 +1,25 @@
+---
+import "../carousel/carousel.css";
+
+interface Image {
+  urlLink: string;
+}
+
+interface Props {
+  imagesCarousel: Array<Image>;
+}
+
+const { imagesCarousel } = Astro.props;
+---
+
+<div class="slider-carousel">
+  <div class="slider-container-carousel">
+    {
+      imagesCarousel.map((image) => (
+        <div class="slider-slide-carousel">
+          <img src={image.urlLink} />)
+        </div>
+      ))
+    }
+  </div>
+</div>

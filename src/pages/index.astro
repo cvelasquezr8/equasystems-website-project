@@ -1,9 +1,13 @@
 ---
-import Layout from "../components/layout.astro";
-import Clients from "../components/client-section.astro";
-import LineOfBusiness from "../components/line-of-business.astro";
-import Carousel from "../components/carousel.astro";
-import About from "../components/about-us.astro";
+import Layout from "../components/layout/layout.astro";
+import Clients from "../components/client-section/client-section.astro";
+import LineOfBusiness from "../components/line-of-business/line-of-business.astro";
+import Carousel from "../components/carousel/carousel.astro";
+import About from "../components/about-us/about-us.astro";
+import Img1 from "/images/carousel/automation.jpeg";
+import Img2 from "/images/carousel/chat-gpt.jpeg";
+import Img3 from "/images/carousel/software.jpeg";
+import Img4 from "/images/carousel/solution.jpeg";
 
 const pageInfo = {
   title: "Home",
@@ -11,10 +15,20 @@ const pageInfo = {
     "La empresa EquaSystems es líder en el desarrollo de software personalizado para empresas de diversos sectores. Con un enfoque en la calidad, la eficiencia y la innovación, nuestro equipo altamente capacitado ofrece soluciones integrales y adaptables para satisfacer las necesidades específicas de cada cliente. Desde aplicaciones móviles hasta sistemas empresariales, en EquaSystems estamos comprometidos a brindar soluciones tecnológicas a medida que impulsen el crecimiento y el éxito de nuestros clientes.",
 };
 
-const imagesCarousel = await Astro.glob("../images/index/*");
-const carousel = imagesCarousel.map((image) => {
-  return { urlLink: image.default };
-});
+const carousel = [
+  {
+    urlLink: Img1,
+  },
+  {
+    urlLink: Img2,
+  },
+  {
+    urlLink: Img3,
+  },
+  {
+    urlLink: Img4,
+  },
+];
 ---
 
 <Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>

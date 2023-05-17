@@ -9,6 +9,9 @@ import example from "/images/team/example.png";
 import jpucuna from "/images/team/jpucuna.png";
 import yarteaga from "/images/team/yarteaga.png";
 import aarteaga from "/images/team/aarteaga.png";
+import emoreira from "/images/team/emoreira.png";
+import asarmiento from "/images/team/asarmiento.png";
+import jgarcia from "/images/team/jgarcia.png";
 
 const pageInfo = {
   title: "Team",
@@ -80,6 +83,33 @@ const membersTeam = [
     altImage: "Anthony Arteaga",
     class: "",
   },
+  {
+    code: "asarmiento",
+    jobPosition: "Developer",
+    description:
+      "Técnologo  en  Desarrollo  de Software,  Premio  a  la  Innovación  de  Sistemas  en  el Tecnológico  Espiritu  Santo.    Conocimiento  en  lenguajes de  programación  JAVA,  JS,  C#,  HTML,  CSS  Chatbot, MySql.  Administrador  de  servidores  y  AD,  Cableado Estructurado.",
+    image: asarmiento,
+    altImage: "Anthony Arteaga",
+    class: "",
+  },
+  {
+    code: "emoreira",
+    jobPosition: "Developer",
+    description:
+      "Ingeniero  en  Sistemas,  Desarrollador en    procedimientos  y  funciones  en  PL-SQL,  conocimiento en  facturación,  inventarios  y  otros  procesos administrativos,  implementación  en  Lenguaje  de Programación..",
+    image: emoreira,
+    altImage: "Anthony Arteaga",
+    class: "",
+  },
+  {
+    code: "jgarcia",
+    jobPosition: "Developer",
+    description:
+      "Estudiante  de  Desarrollo  de Software e Ingeniería Mecánica, Estudiante de Desarrollo en Backend, conocimiento en lenguaje de Phyhon, Kotlin, Flutter,  Java  (POO-JSF-JSP),  PHP,  R,  HTML,  CSS, JavaScript, SQL, C#, Arduino. Certificado en Facturación Electrónica.",
+    image: jgarcia,
+    altImage: "Anthony Arteaga",
+    class: "",
+  },
 ];
 
 let flag = 1;
@@ -87,13 +117,13 @@ membersTeam.forEach((emp) => {
   emp.class = `row row-${flag}`;
   flag = flag === 1 ? 2 : 1;
 });
-
 ---
 
 <Layout pageTitle={pageInfo.title} pageDescription={pageInfo.description}>
-  <section class="team"> 
+  <section class="team">
     <h2 class="section-title-team">
-      Te Presentamos a Nuestro Equipo de Colaboradores</h2>
+      Te Presentamos a Nuestro Equipo de Colaboradores
+    </h2>
     <div class="bio-container animate__animated animate__fadeInUp">
       <div class="wrapper-team">
         <div class="center-line-team">

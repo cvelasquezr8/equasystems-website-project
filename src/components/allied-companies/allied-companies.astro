@@ -1,0 +1,42 @@
+---
+import "../allied-companies/allied-companies.css";
+import Quicsilver from "/images/allied-companies/qs.png";
+import UESS from "/images/allied-companies/UESS.png";
+
+
+const allied = [
+{
+    name: "UESS",
+    comercialName: "Tecnológico Universitario Espíritu Santo",
+    logo: UESS,
+    href: "https://www.tes.edu.ec/",
+    with: "200px",
+    height: "100px"
+  },
+  {
+    name: "Quicsilver",
+    comercialName: "Quicsilver",
+    logo: Quicsilver,
+    href: "https://www.quicksilversystems.com/index.html",
+    with: "300px",
+    height: "80px"
+  },
+
+];
+---
+
+<section class="allied-section">
+  <div class="context-box section-title ">
+    <h2>Alianzas y Socios Estrategicos</h2>
+    <h3>¡Te presentamos a nuestros socios!</h3>
+    <div class="allied-list">
+      {
+       allied.map((allied) => (
+       <div class="allied-item">
+          <a href = {allied.href} target="_blank"> <img src={allied.logo}  alt={allied.comercialName} width={allied.with}/>  </a>
+        </div>
+          ))
+      }
+    </div>
+  </div>
+</section>

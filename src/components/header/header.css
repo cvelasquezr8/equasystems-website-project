@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+*{
+  font-family: Oxygen;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  position: fixed;
+  z-index: 10;
+  background-color: white;
+  width: 100%;
 }
 
 .logo-header img {

@@ -111,12 +111,12 @@ const companyInfo = {
     />
 
   </head>
-
+  <Header companyData={companyInfo} />
   <body>
-    <Header companyData={companyInfo} />
+    
     <slot />
     <FixedButton />
-    <Footer companyData={companyInfo} />
+   
 
     <script>
       //Carousel
@@ -165,5 +165,8 @@ const companyInfo = {
       }
       //Header
     </script>
+
   </body>
+  <Footer companyData={companyInfo} />
+
 </html>

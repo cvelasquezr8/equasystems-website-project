@@ -9,14 +9,19 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  position: fixed;
   z-index: 10;
   background-color: white;
   width: 100%;
 }
 
+.sticky{
+  position: fixed;
+  top:0;
+  width: 100%;
+}
+
 .logo-header img {
-  max-height: 40px;
+  max-height: 60px;
 }
 
 .menu ul {
@@ -43,6 +48,7 @@ header {
 .menu a:hover {
   color: #2699fb;
 }
+
 
 @media (max-width: 768px) {
   .menu {

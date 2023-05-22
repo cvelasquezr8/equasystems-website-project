@@ -50,3 +50,24 @@
 .client-list img:hover {
   filter: grayscale(0%);
 }
+
+@media (max-width: 1110px){
+  .client-list{
+    display:inline;
+  }
+  .client-list{
+    margin: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .client-list{
+    display: grid;
+  }
+  .client-list img{
+    max-width: 180px;
+    padding-bottom: 25px;
+    margin: auto;
+  }
+}
+

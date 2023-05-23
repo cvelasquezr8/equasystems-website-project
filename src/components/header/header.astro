@@ -22,11 +22,12 @@ const { siteMap } = companyData;
     <img src={HeaderLogo} alt="EquaSystems Logo" />
   </div>
   <nav class="menu menu-resp">
-    <ul>
+    <ul id="header-options">
       {
         siteMap.map(site => 
           <li>
-            <a class="selected" href={site.refLink}>{site.name}</a>
+            <a
+            href={site.refLink}>{site.name}</a>
           </li>
         )
       }

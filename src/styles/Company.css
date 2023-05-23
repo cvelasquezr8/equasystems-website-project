@@ -33,11 +33,13 @@
   margin-bottom: 30px;
   background-color: #fff;
   animation-duration: 1s;
+  border-radius: 10px;
 }
 
 .card img {
   width: 100%;
   height: auto;
+  border-radius: 10px 10px 0 0;
 }
 
 .card-body {

@@ -38,23 +38,3 @@ const { siteMap } = companyData;
     <div class="line"></div>
   </div>
 </header>
-
-<script>
-  window.onscroll = function() {scrollFunction()};
-  
-  var header = document.getElementById("header");
-  var body = document.body;  
-
-  var sticky = header.offsetTop;
-  var marginTop = header.offsetHeight;  
-
-  function scrollFunction() {
-    if (window.pageYOffset > sticky) {
-      header.classList.add("sticky");
-      body.style.paddingTop = marginTop.toString()+'px';
-    } else {
-      header.classList.remove("sticky");
-      body.style.paddingTop = '0';
-    }
-  }
-  </script>

@@ -2,6 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  text-align: center;
 }
 
 .line-of-line-of-business {
@@ -22,7 +23,6 @@
 
 .lob-item {
   display: inline-block;
-  vertical-align: top;
   width: 100%;
   max-width: 350px;
   margin-bottom: 30px;
@@ -35,7 +35,7 @@
 }
 
 .lob-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
 }
 
 .lob-item img {
@@ -82,6 +82,7 @@
   .lob-item {
     width: calc(100% / 3 - 40px);
     margin-right: 20px;
+    margin-left: auto;
   }
 
   .lob-item:last-child {

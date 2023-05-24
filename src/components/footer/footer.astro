@@ -30,7 +30,6 @@ interface Props {
 const { companyData } = Astro.props;
 const { socialMedia, siteMap, contact } = companyData;
 ---
-
 <footer>
   <div class="footer-columns">
     <div class="footer-column">
@@ -47,7 +46,7 @@ const { socialMedia, siteMap, contact } = companyData;
       </ul>
     </div>
     <div class="footer-column">
-      <h3>Síguenos en redes sociales</h3>
+      <h3>Síguenos en <div class="footer-column-title">redes sociales</div></h3>
       <ul>
         {
           socialMedia.map((media) => (
@@ -62,7 +61,7 @@ const { socialMedia, siteMap, contact } = companyData;
       </ul>
     </div>
     <div class="footer-column">
-      <h3>Enlaces rápidos</h3>
+      <h3> Enlaces <div class="footer-column-title">rápidos</div></h3>
       <ul>
         {
           siteMap.map((site) => (

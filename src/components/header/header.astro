@@ -17,16 +17,17 @@ const { companyData } = Astro.props;
 const { siteMap } = companyData;
 ---
 
-<header>
+<header id="header">
   <div class="logo-header">
     <img src={HeaderLogo} alt="EquaSystems Logo" />
   </div>
   <nav class="menu menu-resp">
-    <ul>
+    <ul id="header-options">
       {
         siteMap.map(site => 
           <li>
-            <a href={site.refLink}>{site.name}</a>
+            <a
+            href={site.refLink}>{site.name}</a>
           </li>
         )
       }

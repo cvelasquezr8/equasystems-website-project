@@ -109,14 +109,11 @@ const companyInfo = {
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-
   </head>
-
+  <Header companyData={companyInfo} />
   <body>
-    <Header companyData={companyInfo} />
     <slot />
     <FixedButton />
-    <Footer companyData={companyInfo} />
 
     <script>
       //Carousel
@@ -165,5 +162,30 @@ const companyInfo = {
       }
       //Header
     </script>
+
+    <script>
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      var header = document.getElementById("header");
+      var body = document.body;
+
+      var sticky = header.offsetTop;
+      var marginTop = header.offsetHeight;
+
+      function scrollFunction() {
+        if (window.pageYOffset > sticky) {
+          header.classList.add("sticky");
+          body.style.paddingTop = marginTop.toString() + "px";
+        } else {
+          header.classList.remove("sticky");
+          body.style.paddingTop = "0";
+        }
+      }
+    </script>
   </body>
+  <Footer companyData={companyInfo} />
+
+
 </html>

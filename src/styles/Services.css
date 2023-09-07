@@ -61,6 +61,8 @@
 
 .feature {
   animation-duration: 1s;
+  transition: 1.5s;
+
 }
 
 .animated {
@@ -68,7 +70,9 @@
 }
 
 .feature:hover {
-  transform: translateY(-5px);
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 25px #1C5F8A;
 }
 
 @keyframes fadeInUp {

@@ -129,8 +129,7 @@ form.addEventListener("submit", function (event) {
       // Manejar la respuesta de la API aquí
       Swal.fire({
         icon: 'success',
-        title: 'CORREO ENVIADO',
-        footer: `<h4>${data.data}</h4>`
+        title: 'CORREO ENVIADO'
       });
       submitButton.disabled = false;
       nameInput.value = '';

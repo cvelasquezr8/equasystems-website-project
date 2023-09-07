@@ -124,13 +124,13 @@ const companyInfo = {
       let currentSlide = 0;
       const slideInterval = 10000;
       function nextSlide() {
-        slides[currentSlide].classList.remove("active");
+        slides[currentSlide]?.classList.remove("active");
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
+        slides[currentSlide]?.classList.add("active");
       }
 
       setInterval(nextSlide, slideInterval);
-      slides[currentSlide].classList.add("active");
+      slides[currentSlide]?.classList.add("active");
       //Carousel
 
       //Header
@@ -144,18 +144,18 @@ const companyInfo = {
 
       function toggleMenu() {
         if (!showMenu) {
-          menuBtn.classList.add("active");
-          menu.classList.add("show");
+          menuBtn?.classList.add("active");
+          menu?.classList.add("show");
           navItems.forEach((item, index) => {
             item.style.transitionDelay = `${index * 50}ms`;
-            item.classList.add("show");
+            item?.classList.add("show");
           });
           showMenu = true;
         } else {
-          menuBtn.classList.remove("active");
+          menuBtn?.classList.remove("active");
           navItems.forEach((item, index) => {
             item.style.transitionDelay = "";
-            item.classList.remove("show");
+            item?.classList.remove("show");
           });
           setTimeout(() => {
             menu.classList.remove("show");
@@ -164,6 +164,72 @@ const companyInfo = {
         }
       }
       //Header
+
+      import Swal from 'sweetalert2';
+      const form = document.getElementById("formEmail");
+      
+      // Agregar un evento de escucha para el envío del formulario
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita que el formulario se envíe de inmediato
+      
+        // obtener boton para deshabilitarlo
+        const submitButton = form.querySelector('#submitButton') as HTMLInputElement;
+      
+        // Obtener los valores de los campos de entrada
+        const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
+        const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+        const subjectInput = form.querySelector('input[name="subject"]') as HTMLInputElement;
+        const messageTextarea = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      
+        const name = nameInput.value;
+        const email = emailInput.value;
+        const subject = subjectInput.value;
+        const message = messageTextarea.value;
+        submitButton.disabled = true;
+      
+        // Crear un objeto con los datos del formulario
+        const formData = {
+          name,
+          email,
+          subject,
+          message,
+        };
+      
+        // Realizar una solicitud POST a la API
+        fetch("https://node-express-email.vercel.app/enviar-correo", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Hubo un problema al enviar el formulario.");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Manejar la respuesta de la API aquí
+            Swal.fire({
+              icon: 'success',
+              title: 'CORREO ENVIADO'
+            });
+            submitButton.disabled = false;
+            nameInput.value = '';
+            emailInput.value = '';
+            subjectInput.value = '';
+            messageTextarea.value = '';
+          })
+          .catch((error) => {
+            submitButton.disabled = false;
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              footer: `<h4>${(error.error || error)}</h4>`
+            });
+          });
+      });
     </script>
   </body>
 </html>

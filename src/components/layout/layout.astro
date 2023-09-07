@@ -124,13 +124,13 @@ const companyInfo = {
       let currentSlide = 0;
       const slideInterval = 10000;
       function nextSlide() {
-        slides[currentSlide].classList.remove("active");
+        slides[currentSlide]?.classList.remove("active");
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
+        slides[currentSlide]?.classList.add("active");
       }
 
       setInterval(nextSlide, slideInterval);
-      slides[currentSlide].classList.add("active");
+      slides[currentSlide]?.classList.add("active");
       //Carousel
 
       //Header
@@ -144,18 +144,18 @@ const companyInfo = {
 
       function toggleMenu() {
         if (!showMenu) {
-          menuBtn.classList.add("active");
-          menu.classList.add("show");
+          menuBtn?.classList.add("active");
+          menu?.classList.add("show");
           navItems.forEach((item, index) => {
             item.style.transitionDelay = `${index * 50}ms`;
-            item.classList.add("show");
+            item?.classList.add("show");
           });
           showMenu = true;
         } else {
-          menuBtn.classList.remove("active");
+          menuBtn?.classList.remove("active");
           navItems.forEach((item, index) => {
             item.style.transitionDelay = "";
-            item.classList.remove("show");
+            item?.classList.remove("show");
           });
           setTimeout(() => {
             menu.classList.remove("show");

@@ -37,7 +37,7 @@ const pageInfo = {
           <li><i class="fas fa-envelope"></i>{companyInfo.email}</li>
         </ul>
       </div>
-      <form class="contact-form animate__animated animate__fadeInUp" action="#" method="POST">
+      <form id="formEmail" class="contact-form animate_animated animate_fadeInUp">
         <h2>Envíanos un mensaje</h2>
         <input
           type="text"
@@ -72,8 +72,77 @@ const pageInfo = {
           type="submit"
           class="btn btn-skyblue"
           value="Enviar"
+          id="submitButton"
         />
       </form>
     </div>
   </section>
 </Layout>
+
+<script>
+  import Swal from 'sweetalert2';
+  const form = document.getElementById("formEmail");
+  
+  // Agregar un evento de escucha para el envío del formulario
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe de inmediato
+  
+    // obtener boton para deshabilitarlo
+    const submitButton = form.querySelector('#submitButton') as HTMLInputElement;
+  
+    // Obtener los valores de los campos de entrada
+    const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
+    const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+    const subjectInput = form.querySelector('input[name="subject"]') as HTMLInputElement;
+    const messageTextarea = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+  
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const subject = subjectInput.value;
+    const message = messageTextarea.value;
+    submitButton.disabled = true;
+  
+    // Crear un objeto con los datos del formulario
+    const formData = {
+      name,
+      email,
+      subject,
+      message,
+    };
+  
+    // Realizar una solicitud POST a la API
+    fetch("https://node-express-email.vercel.app/enviar-correo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Hubo un problema al enviar el formulario.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Manejar la respuesta de la API aquí
+        Swal.fire({
+          icon: 'success',
+          title: 'CORREO ENVIADO'
+        });
+        submitButton.disabled = false;
+        nameInput.value = '';
+        emailInput.value = '';
+        subjectInput.value = '';
+        messageTextarea.value = '';
+      })
+      .catch((error) => {
+        submitButton.disabled = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          footer: `<h4>${(error.error || error)}</h4>`
+        });
+      });
+  });
+</script>

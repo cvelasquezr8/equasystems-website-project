@@ -21,13 +21,13 @@ header {
 }
 
 .menu a {
-  color: #333;
+  color: #2699fb;
   text-decoration: none;
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 .menu a:hover {
@@ -36,21 +36,29 @@ header {
 
 @media (max-width: 768px) {
   .menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
+    display: none;
+    list-style: none;
     background-color: #fff;
-    z-index: 100;
-    transition: all 0.3s ease-in;
+    width: 200px;
+    transition: all 1s ease-in;
+    z-index: 10;
+    top: 50px;
+    right: 20px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    position: absolute;
+    max-height: 300px; 
+
   }
 
   .menu ul {
+    
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 10%;
+    position: relative;
+    
   }
 
   .menu li {
@@ -58,9 +66,8 @@ header {
   }
 
   .menu a {
-    color: #333;
-    text-decoration: none;
-    font-size: 24px;
+    color: #2699fb;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -78,26 +85,34 @@ header {
     width: 30px;
     height: 21px;
     position: relative;
+    
   }
 
   .burguer .line {
-    width: 100%;
-    height: 3px;
-    background-color: #333;
+    width:100%;
+    height: 5px;
+    background-color: #2699fb;
     transition: all 0.3s ease-in;
+   
   }
 
   .burguer .line:nth-child(2) {
-    width: 70%;
-    margin: 0 auto;
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    
   }
 
   .burguer .line {
-    background-color: #333;
+    background-color: #2699fb;
+    
   }
 
   .burguer.active .line {
-    background-color: #2699fb;
+    left:15px;
+    background:#777;
   }
 
   .burguer.active .line:nth-child(1) {
@@ -111,4 +126,5 @@ header {
   .burguer.active .line:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
   }
+  
 }

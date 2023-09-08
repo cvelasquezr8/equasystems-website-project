@@ -86,6 +86,11 @@
   .content-row {
     flex-direction: column;
   }
+  .description-about p {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+  }
 
   .logo-about,
   .description-about {
@@ -99,11 +104,4 @@
    
   }
 }
-/* @media screen and (max-width: 1008px) {
-  .logo-about {
 
- 
-  
-  }
-  
-} */

@@ -2,8 +2,9 @@
 .wrapper {
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  right: 0px;
   display: inline-flex;
+  z-index: 9;
 }
 
 .wrapper .icon {

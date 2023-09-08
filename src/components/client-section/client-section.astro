@@ -40,12 +40,19 @@ const clients = [
   <div class="animated-section section-title">
     <h2>Nuestros clientes</h2>
     <h3>¡Descubre nuestros clientes en acción!</h3>
-    <div class="client-list">
-      {
-        clients.map((client) => (
-          <img src={client.logo} alt={client.comercialName} />
-        ))
-      }
+    <div class="logos">
+      <div class="logos-slide">
+        {
+          clients.map((client) => (
+            <img src={client.logo} alt={client.comercialName} />
+          ))
+        }
+      </div>
     </div>
+    <script>
+      var copy = document.querySelector(".logos-slide").cloneNode(true);
+      document.querySelector(".logos").appendChild(copy);
+    </script>
+    
   </div>
 </section>

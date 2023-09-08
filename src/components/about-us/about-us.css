@@ -7,23 +7,25 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 30px;
-  color: #0c13df;
+  color:  #133A78;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 0 20px;
 }
 
 .content-row-about {
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-bottom: 20px;
+
 }
 
 .logo-about {
-  flex: 0 0 50%;
-  max-width: 30%;
+  flex: 0 0 40%;
+  max-width: 50vh;
   margin-bottom: 20px;
 }
 
@@ -34,16 +36,16 @@
 
 .description-about {
   flex: 0 0 50%;
-  text-align: left;
-  padding: 20px;
+  padding: 20px 0;
+  
 }
 
 .card-about {
-  margin-left: 30px;
+ 
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 30px 40px;
   border-radius: 2%;
 }
 
@@ -63,7 +65,7 @@
   display: inline-block;
   padding: 10px 20px;
   border-radius: 30px;
-  background-color: #0c13df;
+  background-color: #133A78;
   color: #fff;
   font-size: 20px;
   text-decoration: none;
@@ -88,7 +90,20 @@
   .logo-about,
   .description-about {
     flex: 0 0 100%;
-    max-width: 100%;
+    max-width: 85%;
     margin-bottom: 10px;
+
+  }
+  .card-about {
+    padding: 20px;
+   
   }
 }
+/* @media screen and (max-width: 1008px) {
+  .logo-about {
+
+ 
+  
+  }
+  
+} */

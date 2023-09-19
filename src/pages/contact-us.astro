@@ -86,7 +86,7 @@ const pageInfo = {
   // Agregar un evento de escucha para el envío del formulario
   form.addEventListener("submit", function (event) {
     event.preventDefault(); // Evita que el formulario se envíe de inmediato
-  
+    spinnerShow();
     // obtener boton para deshabilitarlo
     const submitButton = form.querySelector('#submitButton') as HTMLInputElement;
   
@@ -119,6 +119,7 @@ const pageInfo = {
       body: JSON.stringify(formData),
     })
       .then((response) => {
+        Swal.close();
         if (!response.ok) {
           throw new Error("Hubo un problema al enviar el formulario.");
         }
@@ -145,4 +146,17 @@ const pageInfo = {
         });
       });
   });
+
+  function spinnerShow(){
+    Swal.fire({
+      title: 'Enviando su correo...',
+      icon: 'info',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      didOpen: () => {
+	      Swal.showLoading()
+      },
+    });
+  }
+  
 </script>

@@ -1,11 +1,21 @@
 import { defineConfig } from 'astro/config';
-
-// import netlify from "@astrojs/netlify/functions";
-
-// https://astro.build/config
 export default defineConfig({
-  // site: "https://cvelasquezr8.github.io",
-  // base: "/equasystems-website-project",
-  // output: "server",
-  // adapter: netlify()
+  routes: {
+    "./company": {
+      output: '/index.html',
+      component: '@site/pages/company.astro',
+    },
+    "./contact-us": {
+      output: '/index.html',
+      component: '@site/pages/contact-us.astro',
+    },
+    "./services": {
+      output: '/index.html',
+      component: '@site/pages/services.astro',
+    },
+    "./team": {
+      output: '/index.html',
+      component: '@site/pages/team.astro',
+    },
+  }
 });
